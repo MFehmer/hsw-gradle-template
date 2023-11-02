@@ -12,10 +12,14 @@ public class IBAN {
     public boolean istIbanDE(String IBANnumber) {
         String erstenbeidenZiffern = IBANnumber.substring(0, 1);
         String DE = "DE";
-        if(erstenbeidenZiffern.equals(DE)) {
-            return true;
-        }
+        if(erstenbeidenZiffern.equals(DE)) return true;
         return false;
+    }
+    public String getKontonummer(String IBANnumber){
+        return IBANnumber.substring(12);
+    }
+    public String getBLZ(String IBANnumber){
+        return IBANnumber.substring(4,12);
     }
 
     public boolean check(String IBANnumber) {
