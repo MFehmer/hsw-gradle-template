@@ -1,4 +1,5 @@
 package hsw.gradle.template;
+
 import java.math.BigInteger;
 
 public class IBAN {
@@ -8,6 +9,15 @@ public class IBAN {
         this.IBANnumber = IBANnumber;
     }
 
+    public boolean istIbanDE(String IBANnumber) {
+        String erstenbeidenZiffern = IBANnumber.substring(0, 1);
+        String DE = "DE";
+        if(erstenbeidenZiffern.equals(DE)) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean check(String IBANnumber) {
         // explanation source: https://de.wikipedia.org/wiki/Internationale_Bankkontonummer#Prüfsumme
         // step 1: IBAN needs to be 18 digits long
@@ -15,7 +25,7 @@ public class IBAN {
 
         IBANnumber = this.IBANnumber;
 
-        if(IBANnumber.length() != 22) {
+        if (IBANnumber.length() != 22) {
             return false;
         }
         //System.out.println(IBANnumber);
@@ -63,7 +73,7 @@ public class IBAN {
         IBANnumberBigInt = IBANnumberBigInt.mod(modulo);
         //System.out.println(IBANnumberBigInt);
 
-        if(IBANnumberBigInt.intValue() == 1) {
+        if (IBANnumberBigInt.intValue() == 1) {
             return true;
         } else {
             return false;
